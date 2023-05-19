@@ -109,30 +109,35 @@ body {
   align-items: center;
 }
 
+.buttons {
+  min-width: 700px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttons a {
+  text-decoration: none;
+  font-size: 28px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background: #314652;
+  color: #f1f1f1;
+  border-radius: 50%;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease-in-out;
+}
+
+.buttons a:hover {
+  transform: scale(1.2);
+}
+
 footer div {
   margin: 10px;
 }
 
 /* MODELOS */
-
-main nav ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  text-align: center;
-
-  background-color: rgb(0, 0, 0);
-  font-size: 50px;
-}
-
-main nav ul strong a {
-  color: rgb(255, 102, 0);
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 45px;
-  text-decoration: none;
-  padding: 5px 5px 5px 5px;
-  margin: 5px;
-}
 
 .mod-caja {
   display: flex;
@@ -153,11 +158,11 @@ main nav ul strong a {
   display: inline-block;
 }
 
-.img {
+.img-mod {
   grid-column: 2;
 }
 
-.img img {
+.img-mod img {
   width: 100%;
   object-fit: cover;
 }
@@ -174,54 +179,42 @@ main nav ul strong a {
 
 /*EQUIPAMIENTO*/
 
-.eq-container {
-  display: grid;
-  grid-template-areas:
-    "casco campera"
-    "pantalon botas";
+.eq-main {
+  flex-flow: wrap;
 }
 
-.casco {
-  grid-area: casco;
+.eq-caja {
+  display: flex;
+  flex-flow: column;
+  padding-bottom: 2rem;
+  width: 100%;
 }
 
-.campera {
-  grid-area: campera;
-}
-
-.pantalon {
-  grid-area: pantalon;
-}
-
-.botas {
-  grid-area: botas;
-}
-
-.eq_tit {
+.eq-tit {
+  text-align: center;
   color: rgb(255, 102, 0);
   background-color: rgb(0, 0, 0);
   text-decoration: none;
-  font-size: 4rem;
+  font-size: 3rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  padding: 5px 5px 5px 5px;
-  margin: 15px;
 }
 
-.eq_des {
+.img-eq img {
+  width: 100%;
+  object-fit: cover;
+  height: 350px;
+}
+
+.eq-des {
   color: rgb(255, 255, 255);
   background-color: black;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1rem;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 /*SERVICE*/
-
-.service_background {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
 .serv-box {
   color: rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
@@ -236,65 +229,29 @@ main nav ul strong a {
 
 /*ACCESORIOS*/
 
-.acc-container {
-  display: grid;
-  grid-template-areas:
-    "titulo titulo"
-    "foto desc"
-    "desc2 foto2"
-    "foto3 desc3";
+.acc-caja {
+  display: flex;
+  flex-flow: column;
+  padding-top: 2rem;
 }
 
-.acc_tit {
-  grid-area: titulo;
-  color: black;
-  font-size: 4rem;
-  text-align: center;
-}
-
-.acc_desc {
-  grid-area: desc;
+.acc-desc {
   color: rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
   border: solid 1px black;
   text-decoration: none;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 
-.acc_desc2 {
-  grid-area: desc2;
-  color: rgb(0, 0, 0);
-  background-color: rgb(255, 255, 255);
-  border: solid 1px black;
-  text-decoration: none;
-  font-size: 2.5rem;
-}
-
-.acc_desc3 {
-  grid-area: desc3;
-  color: rgb(0, 0, 0);
-  background-color: rgb(255, 255, 255);
-  border: solid 1px black;
-  text-decoration: none;
-  font-size: 2.5rem;
-}
-
-.acc_img {
-  grid-area: foto;
+.acc-img {
+  width: 100%;
   background-color: rgb(255, 255, 255);
   border: solid 1px black;
 }
 
-.acc_img2 {
-  grid-area: foto2;
-  background-color: rgb(255, 255, 255);
-  border: solid 1px black;
-}
-
-.acc_img3 {
-  grid-area: foto3;
-  background-color: rgb(255, 255, 255);
-  border: solid 1px black;
+.acc-img img {
+  width: 100%;
+  height: 50%;
 }
 
 @media (min-width: 576px) {
@@ -309,6 +266,19 @@ main nav ul strong a {
 }
 
 @media (min-width: 992px) {
+  .titulo2 {
+    width: 100%;
+    color: black;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+    font-size: 25px;
+    background-color: rgb(255, 102, 0);
+  }
+
+  .titulo {
+    display: none;
+  }
+
   .flex-foto {
     width: calc(25% - 1rem);
   }
@@ -372,5 +342,15 @@ main nav ul strong a {
 
   .mod-caja div {
     width: 33%;
+  }
+
+  /* EQUIPAMIENTO */
+
+  .eq-caja {
+    width: 50%;
+    padding: 1rem;
+  }
+  .eq-des {
+    font-size: 1.5rem;
   }
 }
