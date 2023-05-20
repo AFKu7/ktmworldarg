@@ -110,9 +110,8 @@ body {
 }
 
 .buttons {
-  min-width: 700px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .buttons a {
@@ -133,8 +132,9 @@ body {
   transform: scale(1.2);
 }
 
-footer div {
-  margin: 10px;
+.main_container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* MODELOS */
@@ -229,13 +229,17 @@ footer div {
 
 /*ACCESORIOS*/
 
-.acc-caja {
-  display: flex;
-  flex-flow: column;
-  padding-top: 2rem;
+.acc-img img {
+  height: 100%;
+  object-fit: cover;
 }
 
 .acc-desc {
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+}
+
+/*.acc-desc {
   color: rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
   border: solid 1px black;
@@ -243,17 +247,11 @@ footer div {
   font-size: 1.5rem;
 }
 
-.acc-img {
-  width: 100%;
-  background-color: rgb(255, 255, 255);
-  border: solid 1px black;
-}
-
 .acc-img img {
   width: 100%;
   height: 50%;
 }
-
+*/
 @media (min-width: 576px) {
   .flex-parr {
     width: calc(70% - 0.5rem);
@@ -352,5 +350,19 @@ footer div {
   }
   .eq-des {
     font-size: 1.5rem;
+  }
+
+  /* ACCESORIOS */
+
+  .acc-caja {
+    height: 300px;
+  }
+
+  .acc-caja:nth-child(odd) {
+    flex-flow: row;
+  }
+
+  .acc-caja:nth-child(even) {
+    flex-flow: row-reverse;
   }
 }
