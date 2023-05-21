@@ -1,9 +1,14 @@
+@import "./variables/color";
+@import "./variables/components";
+@import "./variables/mixins";
+@import "./variables/fonts";
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: #ff944d;
+  background-color: $clr-primary-lt;
 }
 
 .logo {
@@ -14,19 +19,33 @@ body {
 
 .img_izquierda {
   width: 100%;
+
+  @include md {
+    width: auto;
+  }
 }
 
 .img_derecha {
   display: none;
+
+  @include md {
+    display: block;
+  }
 }
 
 .main_header {
   position: relative;
-  height: 56px;
+  height: $header-height;
   margin-top: 0.5rem;
-  background: rgb(255, 102, 0);
+  background: $clr-primary;
   display: flex;
   align-items: center;
+
+  @include md {
+    height: auto;
+    align-items: normal;
+    flex-flow: column;
+  }
 }
 
 .navbar {
@@ -34,21 +53,40 @@ body {
   top: 9px;
   left: 0;
   padding: 0;
+
+  @include md {
+    position: relative;
+  }
 }
 
 .nav-item {
   width: 100%;
+
+  @include md {
+    width: calc(100% / 5);
+  }
 }
 
 .nav-link {
-  color: rgb(0, 0, 0);
-  background-color: rgb(255, 102, 0);
+  color: $clr-text;
+  background-color: $clr-primary;
   border: solid 1px black;
+  font-weight: 600;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: $fs-xl;
   padding: 10px 15px 10px 15px;
   display: inline-block;
   width: 100%;
+
+  &.active,
+  &:hover {
+    background-color: $clr-primary-dk;
+  }
+
+  @include md {
+    font-size: $fs-4xl;
+    width: 100%;
+  }
 }
 
 .navbar-nav {
@@ -56,6 +94,10 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+  @include md {
+    width: 100%;
+  }
 }
 
 .flex-index {
@@ -68,35 +110,51 @@ body {
   width: 100%;
   color: black;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 25px;
+  font-size: $fs-2xl;
   position: absolute;
-  left: 56px;
+  left: $header-height;
   display: flex;
   width: auto;
   align-items: center;
+
+  @include md {
+    display: none;
+  }
 }
 
 .flex-parr {
   width: 100%;
   color: black;
   font-family: "Times New Roman", Times, serif;
-  font-size: 1.2rem;
+  font-size: $fs-xl;
   overflow: auto;
+
+  @include xs {
+    width: calc(60% - 0.5rem);
+  }
 }
 
 .flex-sede {
   width: 100%;
   display: none;
+
+  @include xs {
+    display: flex;
+    width: calc(40% - 0.5rem);
+  }
 }
 
 .flex-foto {
   width: calc(50% - 1rem);
+
+  @include md {
+    width: calc(25% - 1rem);
+  }
 }
 
 .flex-sede img,
 .flex-foto img {
   width: 100%;
-  -o-object-fit: cover;
   object-fit: cover;
 }
 
@@ -105,79 +163,94 @@ body {
   flex-flow: column;
   justify-content: space-between;
   background-color: white;
-  padding: 10px;
+  padding: 0.5rem;
   align-items: center;
+
+  @include md {
+    flex-flow: row;
+  }
 }
 
 .buttons {
   display: flex;
   justify-content: center;
-}
-
-.buttons a {
-  text-decoration: none;
-  font-size: 28px;
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-  text-align: center;
-  background: #314652;
-  color: #f1f1f1;
-  border-radius: 50%;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  transition: all 0.4s ease-in-out;
-}
-
-.buttons a:hover {
-  transform: scale(1.2);
+  a {
+    font-size: $fs-3xl;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background: #314652;
+    color: #f1f1f1;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease-in-out;
+  }
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .main_container {
-  max-width: 1200px;
+  max-width: $main-wrapper;
   margin: 0 auto;
 }
 
 /* MODELOS */
+
 .mod-caja {
   display: flex;
   flex-flow: column;
   padding-top: 1rem;
-}
 
-.mod-caja div {
-  width: 100%;
+  div {
+    width: 100%;
+  }
+
+  @include md {
+    flex-flow: wrap;
+
+    div {
+      width: 33%;
+    }
+  }
 }
 
 .caract {
   grid-column: 1;
-  color: rgb(255, 255, 255);
-  background-color: rgb(0, 0, 0);
+  color: $clr-text-accent;
+  background-color: $clr-text;
   text-decoration: none;
-  font-size: 16px;
+  font-size: $fs-base;
   display: inline-block;
 }
 
 .img-mod {
   grid-column: 2;
-}
-
-.img-mod img {
-  width: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+  @include md {
+    img {
+      height: 100%;
+    }
+  }
 }
 
 .desc {
   grid-column: 3;
-  color: rgb(255, 255, 255);
-  background-color: rgb(0, 0, 0);
+  color: $clr-text-accent;
+  background-color: $clr-text;
   text-decoration: none;
-  font-size: 25px;
-  padding: 2px 2px 2px 2px;
+  font-size: $fs-2xl;
+  padding: 0.5rem;
   display: inline-block;
 }
 
 /*EQUIPAMIENTO*/
+
 .eq-main {
   flex-flow: wrap;
 }
@@ -187,159 +260,99 @@ body {
   flex-flow: column;
   padding-bottom: 2rem;
   width: 100%;
+
+  @include md {
+    width: 50%;
+    padding: 1rem;
+  }
 }
 
 .eq-tit {
   text-align: center;
-  color: rgb(255, 102, 0);
-  background-color: rgb(0, 0, 0);
+  color: $clr-primary;
+  background-color: $clr-text;
   text-decoration: none;
-  font-size: 3rem;
+  font-size: $fs-5xl;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .img-eq img {
   width: 100%;
-  -o-object-fit: cover;
   object-fit: cover;
   height: 350px;
 }
 
 .eq-des {
-  color: rgb(255, 255, 255);
+  color: $clr-text-accent;
   background-color: black;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: $fs-base;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
+  @include md {
+    font-size: $fs-2xl;
+  }
 }
 
 /*SERVICE*/
 .serv-box {
-  color: rgb(0, 0, 0);
-  background-color: rgb(255, 255, 255);
+  color: $clr-text;
+  background-color: $clr-text-accent;
   border: solid 1px black;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: $fs-2xl;
 }
-
 .serv-tit {
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: $fs-2xl;
+  font-weight: 800;
 }
 
+.form-label {
+  font-weight: 600;
+}
 /*ACCESORIOS*/
+
 .acc-img img {
   height: 100%;
-  -o-object-fit: cover;
   object-fit: cover;
 }
 
 .acc-desc {
-  color: rgb(0, 0, 0);
-  background-color: rgb(255, 255, 255);
+  color: $clr-text;
+  background-color: $clr-text-accent;
 }
 
-/*.acc-desc {
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
-    border: solid 1px black;
-    text-decoration: none;
-    font-size: 1.5rem;
-  }
-
-  .acc-img img {
-    width: 100%;
-    height: 50%;
-  }
-  */
-@media (min-width: 576px) {
-  .flex-parr {
-    width: calc(70% - 0.5rem);
-  }
-  .flex-sede {
-    display: flex;
-    width: calc(30% - 0.5rem);
-  }
+.titulo2 {
+  width: 100%;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: $fs-2xl;
+  background-color: $clr-primary;
 }
+
 @media (min-width: 992px) {
-  .titulo2 {
-    width: 100%;
-    color: black;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-      sans-serif;
-    font-size: 25px;
-    background-color: rgb(255, 102, 0);
-  }
-  .titulo {
-    display: none;
-  }
-  .flex-foto {
-    width: calc(25% - 1rem);
-  }
-  .nav-item {
-    width: 20%;
-  }
-  .nav-link {
-    font-size: 2rem;
-    width: 100%;
-  }
   .navbar-collapse {
     background-color: black;
   }
-  .img_izquierda {
-    width: auto;
-  }
-  .img_derecha {
-    display: block;
-  }
-  .main_footer {
-    flex-flow: row;
-  }
-  .main_header {
-    position: relative;
-    height: auto;
-    align-items: normal;
-    flex-flow: column;
-  }
-  .navbar {
-    position: relative;
-  }
-  .navbar-nav {
-    width: 100%;
-  }
-  .titulo {
-    position: relative;
-    left: 0;
-    padding: 1rem;
-    margin-top: 0.5rem;
-  }
+
   /* MODELOS */
-  .mod-caja {
-    flex-flow: wrap;
-  }
+
   .img img {
     height: 100%;
   }
-  .mod-caja div {
-    width: 33%;
-  }
-  /* EQUIPAMIENTO */
-  .eq-caja {
-    width: 50%;
-    padding: 1rem;
-  }
-  .eq-des {
-    font-size: 1.5rem;
-  }
+
   /* ACCESORIOS */
+
   .acc-caja {
     height: 300px;
   }
+
   .acc-caja:nth-child(odd) {
     flex-flow: row;
   }
+
   .acc-caja:nth-child(even) {
     flex-flow: row-reverse;
   }
-} /*# sourceMappingURL=style.css.map */
+}
